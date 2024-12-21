@@ -13,33 +13,25 @@ class Task
 {
     /**
      * @ORM\Id
-     * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $id;
+    private int $id;
 
     /** @ORM\Column(type="integer") */
-    private $taskId;
+    private int $value;
 
     /** @ORM\Column(type="integer") */
-    private $value;
-
-    /** @ORM\Column(type="integer") */
-    private $estimatedDuration;
+    private int $estimatedDuration;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getTaskId(): ?int
+    public function setId(int $id): self
     {
-        return $this->taskId;
-    }
-
-    public function setTaskId(int $taskId): self
-    {
-        $this->taskId = $taskId;
+        $this->id = $id;
         return $this;
     }
 

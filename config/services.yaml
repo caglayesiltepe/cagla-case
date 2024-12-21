@@ -37,3 +37,8 @@ services:
   App\Factory\ProviderFactory:
     arguments:
       $apiService: '@App\Service\ApiService'
+
+  # DeveloperService is automatically injected into the TaskDistributionService class
+  App\Service\TaskDistributionService:
+    arguments:
+      $developerService: '@App\Service\DeveloperService'
