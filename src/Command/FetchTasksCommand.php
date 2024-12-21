@@ -27,6 +27,7 @@ class FetchTasksCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        $this->entityManager->beginTransaction();
         try {
             $providers = [ProviderEnum::TASKS, ProviderEnum::DEVELOPERS];
             foreach ($providers as $provider) {
@@ -47,9 +48,11 @@ class FetchTasksCommand extends Command
             }
 
             $this->entityManager->flush();
+            $this->entityManager->commit();
 
             return ProviderEnum::SUCCESS;
         } catch (\Exception $e) {
+            $this->entityManager->rollback();
             $output->writeln('Error: ' . $e->getMessage());
             return ProviderEnum::FAILURE;
         }
@@ -59,7 +62,7 @@ class FetchTasksCommand extends Command
     {
         foreach ($tasks as $taskData) {
             $task = new Task();
-            $task->setTaskId($taskData['id']);
+            $task->setId($taskData['id']);
             $task->setValue($taskData['value']);
             $task->setEstimatedDuration($taskData['estimated_duration']);
 
@@ -71,7 +74,7 @@ class FetchTasksCommand extends Command
     {
         foreach ($developers as $developerData) {
             $developer = new Developer();
-            $developer->setDeveloperId($developerData['id']);
+            $developer->setId($developerData['id']);
             $developer->setDuration($developerData['sure']);
             $developer->setDifficulty($developerData['zorluk']);
             $this->entityManager->persist($developer);

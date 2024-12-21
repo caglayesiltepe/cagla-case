@@ -13,33 +13,25 @@ class Developer
 {
     /**
      * @ORM\Id
-     * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $id;
+    private int $id;
 
     /** @ORM\Column(type="integer") */
-    private $developerId;
+    private int $duration;
 
     /** @ORM\Column(type="integer") */
-    private $duration;
-
-    /** @ORM\Column(type="integer") */
-    private $difficulty;
+    private int $difficulty;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getDeveloperId(): ?int
+    public function setId(int $id): self
     {
-        return $this->developerId;
-    }
-
-    public function setDeveloperId(int $developerId): self
-    {
-        $this->developerId = $developerId;
+        $this->id = $id;
         return $this;
     }
 

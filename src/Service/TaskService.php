@@ -5,7 +5,7 @@ namespace App\Service;
 use App\Repository\TaskRepository;
 
 class TaskService {
-    private $repository;
+    private TaskRepository $repository;
 
     public function __construct(TaskRepository $repository) {
         $this->repository = $repository;
