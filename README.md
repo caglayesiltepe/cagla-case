@@ -15,8 +15,8 @@ Projeyi çalıştırmak için yerel bilgisayarınızda aşağıdaki gereksinimle
 1. Bu depoyu yerel makinenize klonlayın:
 
     ```bash
-    git clone git@bitbucket.org:easycep/easycep-ecommerce.git
-    ```
+   gh repo clone caglayesiltepe/cagla-case
+   ```
 
 2. Terminal veya Komut İstemi'ni açın ve proje dizinine gidin:
 
