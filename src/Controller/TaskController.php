@@ -7,7 +7,7 @@ use App\Service\TaskDistributionService;
 use App\Service\TaskService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-
+use Symfony\Component\Routing\Annotation\Route;
 class TaskController extends AbstractController
 {
     private TaskService $taskService;
